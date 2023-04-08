@@ -16,7 +16,7 @@ export class CoursesService {
 
 
   list(){
-    
+
     return this.httpClient.get<Course[]>(this.API).pipe(
       first(), //corta subscricao depois que faz a primeira chamada
       delay(1000),
@@ -24,4 +24,8 @@ export class CoursesService {
     );
   }
 
+
+  save(record: Course){
+    return this.httpClient.post<Course>(this.API, record).pipe(first());
+  }
 }
