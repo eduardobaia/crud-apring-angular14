@@ -18,8 +18,6 @@ export class CoursesComponent implements OnInit{
   //add $ a variavel pra indicar que isto e um observable
   courses$: Observable<Course[]>;
 
-  displayedColumns = ['name', 'category', 'actions'];
-
 
   constructor(
     private coursesService: CoursesService,
