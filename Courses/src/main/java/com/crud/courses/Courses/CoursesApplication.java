@@ -17,10 +17,10 @@ public class CoursesApplication {
 	@Bean
 	CommandLineRunner initDatabase(CourseRepository courseRepository){
 		return args -> {
-			courseRepository.deleteAll();
+		//	courseRepository.deleteAll();
 			Course course = new Course();
 			course.setName("Angular com spring");
-			course.setCatagory("front-end");
+			course.setCategory("front-end");
 			courseRepository.save(course);
 		};
 	}
