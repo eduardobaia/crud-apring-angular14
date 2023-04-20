@@ -18,7 +18,7 @@ export class CourseFormComponent implements OnInit {
 
     // name: ['', [Validators.required]],
     // name: new FormControl('', {nonNullable: true}),
-    // _id: [''],
+    _id: [''],
     name: [''],
     category: [''],
 
@@ -31,16 +31,17 @@ export class CourseFormComponent implements OnInit {
     private location: Location,
     private route: ActivatedRoute
     ) {
-
+      const course: Course = this.route.snapshot.data['course'];
+      this.form.setValue({
+        _id: course._id,
+        name: course.name,
+        category: course.category
+      })
 
   }
 
   ngOnInit(): void {
-    const course: Course = this.route.snapshot.data['course'];
-    this.form.setValue({
-      name: course.name,
-      category: course.category
-    });
+
   }
 
   onSubmit() {
