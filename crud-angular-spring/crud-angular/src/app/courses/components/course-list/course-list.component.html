@@ -32,8 +32,8 @@
     </mat-header-cell>
 
     <mat-cell *matCellDef="let course" class="action-column">
-      <button mat-icon-button color="accent" aria-label="Edit Course">
-        <mat-icon (click)="onAdd()">edit</mat-icon>
+      <button (click)="onEdit(course)" mat-icon-button color="accent" aria-label="Edit Course">
+        <mat-icon >edit</mat-icon>
       </button>
 
       <button mat-icon-button color="warn" aria-label="Remove course">

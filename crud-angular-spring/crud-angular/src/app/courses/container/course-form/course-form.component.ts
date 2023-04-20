@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, NonNullableFormBuilder, UntypedFormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { CoursesService } from '../services/courses.service';
+import { CoursesService } from '../../services/courses.service';
+import { ActivatedRoute } from '@angular/router';
+import { Course } from '../../models/course';
 
 @Component({
   selector: 'app-course-form',
@@ -16,23 +18,29 @@ export class CourseFormComponent implements OnInit {
 
     // name: ['', [Validators.required]],
     // name: new FormControl('', {nonNullable: true}),
+    // _id: [''],
     name: [''],
     category: [''],
 
-  });;
+  });
 
   //quando todos os cmapos forem obrigatgorio, usa se o nonNullFormBuilder..
   constructor(private formBuilder: NonNullableFormBuilder,
     private service: CoursesService,
     private _snackBar: MatSnackBar,
-    private location: Location) {
+    private location: Location,
+    private route: ActivatedRoute
+    ) {
 
 
   }
 
   ngOnInit(): void {
-
-
+    const course: Course = this.route.snapshot.data['course'];
+    this.form.setValue({
+      name: course.name,
+      category: course.category
+    });
   }
 
   onSubmit() {

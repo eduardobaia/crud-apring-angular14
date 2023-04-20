@@ -1,4 +1,4 @@
-import { Course } from './../courses/models/course';
+import { Course } from '../models/course';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { delay, first, tap } from 'rxjs';
@@ -19,7 +19,7 @@ export class CoursesService {
 
     return this.httpClient.get<Course[]>(this.API).pipe(
       first(), //corta subscricao depois que faz a primeira chamada
-      delay(1000),
+      delay(500),
       tap(courses => console.log(courses))
     );
   }
@@ -28,4 +28,10 @@ export class CoursesService {
   save(record:Partial<Course>){
     return this.httpClient.post<Course>(this.API, record).pipe(first());
   }
+
+
+  loadById(id: string){
+    return this.httpClient.get<Course>(`${this.API}/${id}`);
+  }
+
 }
