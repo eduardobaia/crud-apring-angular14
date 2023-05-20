@@ -22,6 +22,18 @@ public class CoursesApplication {
 			course.setName("Angular com spring");
 			course.setCategory("front-end");
 			courseRepository.save(course);
+			course.setId(null);
+			course.setName("Java");
+			course.setCategory("back-end");
+			courseRepository.save(course);
+			course.setId(null);
+			course.setName("Node com mongo");
+			course.setCategory("back-end");
+			courseRepository.save(course);
+			course.setId(null);
+			course.setName("React js");
+			course.setCategory("front-end");
+			courseRepository.save(course);
 		};
 	}
 
